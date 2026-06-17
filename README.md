@@ -14,7 +14,7 @@ Note: The UI design is based on a YouTube tutorial [**Build a Full-Stack AI-Powe
 
 ---
 
-## 🌐 Demo Video
+## 🎥 Demo Video
 
 👉 https://drive.google.com/file/d/1gxamHeCAWAM4FD8LnN1RKCgmYXWWesZ7/view?usp=drivesdk
 
