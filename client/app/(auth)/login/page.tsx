@@ -53,14 +53,8 @@ const Login = () => {
 
         try {
             setLoading(true)
-            const res = await api.post(
-                "/auth/login",
-                {
-                email: formData.email, 
-                password: formData.password}
-            )
             toast.success("Logged in successfully")
-            login() 
+            login(formData.email, formData.password) 
         } catch(err: any) {
             toast.error(errorMessages[err?.response?.data?.message as ErrorKey] || err?.response?.data?.message)    
             setFormData(prev => ({...prev, password: ""}))        

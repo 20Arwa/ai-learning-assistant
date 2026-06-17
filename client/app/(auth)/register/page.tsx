@@ -73,15 +73,8 @@ const Register = () => {
         
         try {
             setLoading(true)
-            const res = await api.post(
-                "/auth/register",
-                {
-                    user_name: formData.user_name, 
-                    email: formData.email, 
-                    password: formData.password}
-            )
             toast.success("Account created successfully")
-            register()
+            register(formData.user_name, formData.email, formData.password)
         } catch(err : any) {
             toast.error(err?.response?.data?.message || "something went wrong, please try again")
             setFormData(prev => ({...prev, password: "", confirm_password: ""}))        

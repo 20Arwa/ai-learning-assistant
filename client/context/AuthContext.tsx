@@ -10,8 +10,8 @@ type AuthcontextTypes = {
     user: userType | null,
     setUser: React.Dispatch<React.SetStateAction<userType | null>>,
     loading: boolean,
-    register: () => Promise<void>,
-    login: () => Promise<void>,
+    register:  (user_name: string, email: string, password: string) => Promise<void>,
+    login:  (email: string, password: string) => Promise<void>,
     logout: () => Promise<void>
 }
 
@@ -37,21 +37,28 @@ export const AuthProvider = ({children}: {children: React.ReactNode}) => {
         fetchUser()
     }, [])
 
-    const register = async () => {
+    const register = async (user_name: string, email: string, password:string) => {
         try {
-            const res = await api.get("/auth/getProfile")
-            setUser(res.data)
-            router.push("/dashboard")
+            const res = await api.post("/auth/register", {
+                user_name,
+                email,
+                password,
+            });            
+            setUser(res.data.user);
+            router.push("/dashboard");
         } catch(err) {
             toast.error("Failed to fetch user")
         }
     }
     
-    const login = async () => {
+    const login = async (email: string, password:string) => {
         try {
-            const res = await api.get("/auth/getProfile")
-            setUser(res.data)
-            router.push("/dashboard")
+            const res = await api.post("/auth/login", {
+                email,
+                password,
+            });            
+            setUser(res.data.user);
+            router.push("/dashboard");
         } catch(err) {
             toast.error("Failed to fetch user")
         }

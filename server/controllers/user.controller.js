@@ -39,7 +39,7 @@ const register = asyncHandler(async(req, res, next) => {
     res.status(201).json({
         success: true,
         message: "Account is created successfully",
-        user: {id: user.id, user_name: user.user_name, email: user.email},
+        user: {id: user.id, user_name: user.user_name, email: user.email, profile_img: user.profile_img},
     })
 })
 
@@ -77,7 +77,7 @@ const login = asyncHandler(async(req, res, next) => {
 
     res.status(200).json({
         message: "Logged in successfully",
-        user: {id: user.id, user_name: user.user_name, email: user.email}, 
+        user: {id: user.id, user_name: user.user_name, email: user.email, profile_img: user.profile_img}, 
     })
 })
 
