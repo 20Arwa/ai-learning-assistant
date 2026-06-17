@@ -5,7 +5,8 @@ import { createError } from "../utils/createError.js"
 const validateToken = asyncHandler(async(req, res, next) => {
     const token = req.cookies.token
 
-    console.log("TOKEN:", token)
+    console.log("HEADERS:", req.headers.cookie)
+    console.log("COOKIES:", req.cookies)
 
     try {
         const decode = jwt.verify(
