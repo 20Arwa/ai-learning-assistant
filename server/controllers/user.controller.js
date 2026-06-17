@@ -36,6 +36,7 @@ const register = asyncHandler(async(req, res, next) => {
         maxAge: 23 * 60 * 60 * 1000
     })
 
+    
     res.status(201).json({
         success: true,
         message: "Account is created successfully",

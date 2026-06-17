@@ -12,17 +12,22 @@ const serverApi = async () => {
         },
     })
 
+    console.log(
+    "ALL:",
+    cookieStore.getAll()
+    )
 
-    
-    
+    console.log(
+    "TOKEN:",
+    cookieStore.get("token")
+    )
 
-    console.log("ALL COOKIES:", cookieStore.getAll())
-    
     api.interceptors.response.use(
         (response) => response,
         (error) => {
         if (error.response?.status === 401) {
-            redirect("/login")
+            // redirect("/login")
+            console.log("SERVER API ERROR:",error.response?.status, error.response?.data)
         }
 
         return Promise.reject(error)
