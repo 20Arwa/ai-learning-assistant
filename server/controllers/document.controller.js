@@ -10,9 +10,9 @@ import { Chat } from "../models/chat.model.js"
 import parsePDF from "../utils/pdfParser.js"
 import textChunker from "../utils/textChunker.js"
 import createEmbedding from "../utils/embedding.js"
-import { DocumentChunk } from "../models/DocumentChunk.model.js"
+import { DocumentChunk } from "../models/documentChunk.model.js"
 import { Message } from "../models/message.model.js"
-import { Activity } from "../models/Activity.model.js"
+import { Activity } from "../models/activity.model.js"
 
 
 const getADoc = asyncHandler(async(req, res) => {

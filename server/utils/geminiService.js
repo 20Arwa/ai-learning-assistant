@@ -9,7 +9,7 @@ import textChunker from "./textChunker.js"
 import createEmbedding from "./embedding.js"
 import { Document } from "../models/document.model.js"
 import { createError } from "./createError.js"
-import { DocumentChunk } from "../models/DocumentChunk.model.js"
+import { DocumentChunk } from "../models/documentChunk.model.js"
 import { Message } from "../models/message.model.js";
 
 // Ai

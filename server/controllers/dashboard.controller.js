@@ -4,7 +4,7 @@ import { Document } from "../models/document.model.js"
 import { Flashcard } from "../models/flashcard.model.js"
 import { Quiz } from "../models/quiz.model.js"
 import { error } from "console"
-import { Activity } from "../models/Activity.model.js"
+import { Activity } from "../models/activity.model.js"
 
 
 const getDashboardStats = asyncHandler(async (req, res) => {
