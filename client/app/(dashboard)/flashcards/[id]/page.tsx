@@ -1,21 +1,34 @@
+"use client"
 import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
-import serverApi from "@/lib/serverApi"
 import Flashcard from "./Flashcard"
+import api from "@/lib/api"
+import toast from "react-hot-toast"
+import { useEffect, useState } from "react"
+import { useParams } from "next/navigation"
+import { flashcardType } from "@/lib/types"
+import Loading from "@/components/Loading"
 
-type PropsType = {
-    params: Promise<{
-        id: string
-    }>
-}
+const Page = () => {
 
-const Page = async ({ params }: PropsType) => {
-    const { id } = await params
-    const api = await serverApi()
+    const params = useParams()
+    const id = params.id
 
-    const res = await api.get(`flashcard/${id}`)
-    const initialFlashcard = res.data.flashcard
+    const [initialFlashcard, setInitialFlashcard] = useState<flashcardType | null>(null)
 
+    useEffect(() => {
+        const fetchFlashcard = async () => {
+        try {
+            const res = await api.get(`flashcard/${id}`)
+            setInitialFlashcard(res.data.flashcard)
+        } catch(err: any) {
+            toast.error(err?.response?.data?.message)
+        }
+        }
+        fetchFlashcard() 
+    }, [])
+    
+    if (!initialFlashcard) return <Loading></Loading>
     return (
         <div>
             <Link href={"/flashcards"} className="flex items-center gap-x-1 text-muted-foreground hover:text-secondary-foreground transition">

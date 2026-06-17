@@ -1,16 +1,29 @@
-
+"use client"
 import { Star } from "lucide-react"
 import Link from "next/link"
 import { flashcardType } from "@/lib/types"
-import serverApi from "@/lib/serverApi"
 import Flashcards from "./Flashcards"
+import { useEffect, useState } from "react"
+import api from "@/lib/api"
+import toast from "react-hot-toast"
+import Loading from "@/components/Loading"
 
-const Page = async () => {
-    const api = await serverApi()
+const Page = () => {
+    const [flashcards, setFlashcards] = useState<flashcardType[] | null>(null)
 
-    const res = await api.get("flashcard/")
-    const flashcards: flashcardType[] = res.data.flashcards
-
+    useEffect(() => {
+        const fetchFlashcards = async () => {
+        try {
+            const res = await api.get("flashcard/")
+            setFlashcards(res.data.flashcards)
+        } catch(err: any) {
+            toast.error(err?.response?.data?.message)
+        }
+        }
+        fetchFlashcards() 
+    }, [])
+    
+if (!flashcards) return <Loading></Loading>
 return (
     <div className="bg-background">
         <div className="flex justify-between items-center mb-5">

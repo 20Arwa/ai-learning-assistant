@@ -1,31 +1,49 @@
+"use client"
 import { ArrowLeft, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { flashcardType } from "@/lib/types"
-import serverApi from "@/lib/serverApi"
 import Favorites from "./Favorites"
 import { favCardsType } from "@/lib/types"
+import { useEffect, useState } from "react"
+import Loading from "@/components/Loading"
+import api from "@/lib/api"
+import toast from "react-hot-toast"
 
 
 
-const page = async () => {
-    const api = await serverApi()
+const page = () => {
+    const [favorites, setFavorites] = useState<favCardsType[] | null>(null)
+    
+    useEffect(() => {
+        const fetchFlashcard = async () => {
+        try {
+            const res = await api.get(`flashcard/`)  
 
-    const res = await api.get(`flashcard/`)
+            const favs: favCardsType[] = []
 
-    const favorites: favCardsType[] = []
-
-    res.data.flashcards.forEach((flashcard: flashcardType) => {
-        flashcard.questions.forEach((question) => {
-            if (question.favorite) {
-                favorites.push({
+            res.data.flashcards.forEach((flashcard: flashcardType) => {
+                flashcard.questions.forEach((question) => {
+                if (question.favorite) {
+                    favs.push({
                     ...question,
-                    flashcard_id: flashcard._id
+                    flashcard_id: flashcard._id,
+                    })
+                }
                 })
-            }
-        })
-    })
+            })
 
+            setFavorites(favs)
+        } catch(err: any) {
+            toast.error(err?.response?.data?.message)
+        }
+        }
+        fetchFlashcard() 
+    }, [])
+    
+    
+
+    if (!favorites) return <Loading></Loading>
     return (
         <div>
             <Link href={"/flashcards"} className="flex items-center gap-x-1 text-muted-foreground hover:text-secondary-foreground transition">

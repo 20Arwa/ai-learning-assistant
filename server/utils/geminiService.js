@@ -375,7 +375,7 @@ export const aiChat = async(doc_id, chat_id, user_ques) => {
     const messages = await Message.find({ chat_id })
     .sort({ createdAt: -1 })
     .skip(1)
-    .limit(8)
+    .limit(5)
     .lean()
     
     messages.reverse()
@@ -413,7 +413,7 @@ export const aiChat = async(doc_id, chat_id, user_ques) => {
     try {
         const result = await model.generateContent(prompt)
         return result.response.text()
-    } catch {
+    } catch(err) {
         throw createError("Failed to generate response", 500)
     }
 }

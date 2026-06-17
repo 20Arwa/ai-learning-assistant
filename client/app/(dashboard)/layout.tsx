@@ -1,17 +1,15 @@
 "use client"
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useAuth } from '@/context/AuthContext'
 import { BrainCircuit, LayoutDashboard, TextAlignJustify, FileText, BookOpen, User, LogOut } from "lucide-react"
-import toast from 'react-hot-toast'
-import { useRouter, usePathname } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { Skeleton } from '@/components/ui/skeleton'
 import Loading from '@/components/Loading'
 
 const DashboardLayout = ({children,} : Readonly<{children: React.ReactNode}>) => {
     const {user, loading, logout} = useAuth()
-    const router = useRouter()
 
     const pathName = usePathname()
 

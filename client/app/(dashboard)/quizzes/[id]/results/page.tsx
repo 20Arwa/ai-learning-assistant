@@ -1,21 +1,33 @@
+"use client"
 import { ArrowLeft } from "lucide-react"
 import Link from "next/link"
-import serverApi from "@/lib/serverApi"
 import Result from "./Result"
+import Loading from "@/components/Loading"
+import toast from "react-hot-toast"
+import api from "@/lib/api"
+import { useEffect, useState } from "react"
+import { useParams } from "next/navigation"
+import { QuizType } from "@/lib/types"
 
-type PropsType = {
-    params: Promise<{
-        id: string
-    }>
-}
+const page = () => {
+    const params = useParams()
+    const id = params.id
 
-const page = async({ params }: PropsType) => {
-    const { id } = await params
-    const api = await serverApi()
+    const [quiz, setQuiz] = useState<QuizType | null>(null)
 
-    const res = await api.get(`quiz/${id}`)
-    const quiz = res.data.quiz
-
+    useEffect(() => {
+        const fetchQuiz = async () => {
+            try {
+            const res = await api.get(`quiz/${id}`)
+            setQuiz(res.data.quiz)
+            } catch(err: any) {
+            toast.error(err?.response?.data?.message)
+            }
+        }
+        fetchQuiz() 
+    }, [])
+    
+    if (!quiz) return <Loading></Loading>
     return (
         <div>
             <Link href={`/documents/${quiz?.doc_id._id}?tab=quizzes`} className="text-sm flex items-center gap-x-1 text-muted-foreground hover:text-secondary-foreground transition">

@@ -1,22 +1,33 @@
+"use client"
 import {ArrowLeft} from "lucide-react"
 import Link from "next/link"
-import serverApi from "@/lib/serverApi"
 import Document from "./Document"
+import { useEffect, useState } from "react"
+import api from "@/lib/api"
+import { docType } from "@/lib/types"
+import Loading from "@/components/Loading"
+import toast from "react-hot-toast"
+import { useParams } from "next/navigation"
 
-type PropsType = {
-    params: Promise<{
-        id: string
-    }>
-}
+const Page = () => {
+    const params = useParams()
+    const id = params.id
 
-const Page = async ({ params }: PropsType) => {
-    const { id } = await params
+    const [initialDocument, setInitialDocument] = useState<docType | null>(null)
 
-    const api = await serverApi()
-
-    const res = await api.get(`document/${id}`)
-    const initialDocument = res.data.doc
-
+    useEffect(() => {
+        const fetchDocument = async () => {
+        try {
+            const res = await api.get(`document/${id}`)
+            setInitialDocument(res.data.doc)
+        } catch(err: any) {
+            toast.error(err?.response?.data?.message)
+        }
+        }
+        fetchDocument() 
+    }, [])
+    
+    if (!initialDocument) return <Loading></Loading>
     return (
         <div>
             <Link href={"/documents"} className="flex items-center gap-x-1 text-muted-foreground hover:text-secondary-foreground transition">
