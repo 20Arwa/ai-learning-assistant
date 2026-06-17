@@ -16,9 +16,7 @@ api.interceptors.response.use(
         ["/login", "/register"].includes(window.location.pathname)
 
         if (status === 401 && !isAuthPage) {
-        toast.error("Session expired. Please log in again.")
-
-        window.location.replace("/login")
+            window.location.replace("/login")
         }
 
         return Promise.reject(error)

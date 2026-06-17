@@ -5,18 +5,23 @@ import { createError } from "../utils/createError.js"
 const validateToken = asyncHandler(async(req, res, next) => {
     const token = req.cookies.token
 
-    if (!token) {
-        createError("No token provided", 401)
-    }
+console.log("TOKEN:", token)
 
-    try {
-        const decode = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
-        req.user = decode
-        next()
+try {
+    const decode = jwt.verify(
+        token,
+        process.env.ACCESS_TOKEN_SECRET
+    )
 
-    } catch(err) {
-        throw err
-    }
+    console.log("DECODE:", decode)
+
+    req.user = decode
+    next()
+} catch (err) {
+    console.log("VERIFY ERROR:", err.message)
+    throw err
+}
 })
+
 
 export {validateToken}

@@ -1,6 +1,4 @@
 import RecentAndStats from './RecentAndStats'
-import { cookies } from 'next/headers'
-import { redirect } from 'next/navigation'
 import serverApi from "@/lib/serverApi"
 import { StatsType, recentType } from '@/lib/types'
 

@@ -32,25 +32,13 @@ Note: The UI design is based on a YouTube tutorial [**Build a Full-Stack AI-Powe
 
 ## App Preview
 
-* Home Page
+### Home Page
 
 ![Home Page](screenshots/dashboard.png)
 
-## Document Page
+### Document Page
 
 ![Document Page](screenshots/document.png)
-
-* Flashcard
-
-![Dashboard](screenshots/flashcard.png)
-
-* Quiz
-
-![Quiz](screenshots/quiz.png)
-
-* Quiz Result
-
-![Quiz Result](screenshots/quiz-result.png)
 
 
 ---
@@ -82,7 +70,7 @@ Note: The UI design is based on a YouTube tutorial [**Build a Full-Stack AI-Powe
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/20Arwa/fullStack-ai-learning-assistant.git
+git clone https://github.com/20Arwa/ai-learning-assistant.git
 cd fullStack-ai-learning-assistant
 ```
 
