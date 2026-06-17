@@ -12,7 +12,7 @@ import textChunker from "../utils/textChunker.js"
 import createEmbedding from "../utils/embedding.js"
 import { DocumentChunk } from "../models/documentChunk.model.js"
 import { Message } from "../models/message.model.js"
-import { Activity } from "../models/activity.model.js"
+import { Activity } from "../models/Activity.model.js"
 
 
 const getADoc = asyncHandler(async(req, res) => {

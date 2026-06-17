@@ -4,7 +4,7 @@ import path from "path"
 import { createError } from "../utils/createError.js"
 import { Quiz } from "../models/quiz.model.js"
 import { aiGenerateQuiz } from "../utils/geminiService.js"
-import { Activity } from "../models/activity.model.js"
+import { Activity } from "../models/Activity.model.js"
 import { Document } from "../models/document.model.js"
 
 // Get A Quiz
