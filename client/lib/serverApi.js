@@ -12,6 +12,8 @@ const serverApi = async () => {
         },
     })
 
+    console.log("SERVER COOKIES:", cookieStore.getAll())
+    
     api.interceptors.response.use(
         (response) => response,
         (error) => {

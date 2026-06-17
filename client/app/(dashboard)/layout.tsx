@@ -36,7 +36,7 @@ const DashboardLayout = ({children,} : Readonly<{children: React.ReactNode}>) =>
         {
             href: "/profile",
             label: "Profile",
-            icon: User
+            icon: User 
         }
     ]
 
