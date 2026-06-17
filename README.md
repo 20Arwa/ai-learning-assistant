@@ -2,29 +2,27 @@
 
 A full-stack AI-powered learning application that allows users to upload documents, explore their content, and interact with them using AI. Users can chat with their documents, generate summaries, flashcards, quizzes, and get concept explanations in a smart and interactive way.
 
-This project was built for learning purposes and practicing modern full-stack development and AI integration.
-
 Note: The UI design is based on a YouTube tutorial [**Build a Full-Stack AI-Powered Learning Assistant App**](https://youtu.be/iaAdWmAu0TE?si=6K5bPzhlFyn12CTG), with custom improvements and additional features implemented for learning and development purposes.
 
 ---
 
 ## 🌐 Live Demo
 
-👉 https://full-stack-ai-learning-assistant.vercel.app/
+👉 https://ai-learning-assistant-4jdaen9hq-arwas-projects-d21dd2bc.vercel.app/dashboard
+
+**Note:** AI-powered features are disabled in the live demo because the required API key is not deployed publicly. You can run the project locally with your own API keys to access the full functionality.
 
 ---
 
 ## ✨ Features
 
 * Upload and manage documents
-* View uploaded documents and their content
 * AI-powered document chat (ask questions about your files)
 * Generate smart summaries of documents
 * Create flashcards from document content
 * Generate quizzes for self-assessment
 * Explain specific concepts from documents using AI
-* User authentication (Register & Login)
-* JWT-based authorization
+* JWT-based authentication and authorization (Register & Login)
 * User-specific document management
 * Responsive and modern UI
 
@@ -32,9 +30,9 @@ Note: The UI design is based on a YouTube tutorial [**Build a Full-Stack AI-Powe
 
 ## App Preview
 
-### Home Page
+### Dashboard
 
-![Home Page](screenshots/dashboard.png)
+![Dashboard](screenshots/dashboard.png)
 
 ### Document Page
 
@@ -59,7 +57,6 @@ Note: The UI design is based on a YouTube tutorial [**Build a Full-Stack AI-Powe
 * Node.js
 * Express.js
 * MongoDB
-* Mongoose
 * JSON Web Token (JWT)
 
 ---
@@ -71,7 +68,7 @@ Note: The UI design is based on a YouTube tutorial [**Build a Full-Stack AI-Powe
 
 ```bash
 git clone https://github.com/20Arwa/ai-learning-assistant.git
-cd fullStack-ai-learning-assistant
+cd ai-learning-assistant
 ```
 
 ### 2. Install dependencies
@@ -89,7 +86,6 @@ Create the following environment files:
 ```env
 MONGODB_URL=your_mongodb_connection_string
 PORT=5000
-SERVER_URL=http://localhost:5000
 CLIENT_URL=http://localhost:3000
 ACCESS_TOKEN_SECRET=your_access_token_secret
 GEMINI_API_KEY=your_gemini_api_key
@@ -108,7 +104,6 @@ npm run dev
 ```
 
 ### 5. Open in browser
-
 http://localhost:3000
 
 
