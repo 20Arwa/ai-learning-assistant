@@ -59,8 +59,8 @@ export const AuthProvider = ({children}: {children: React.ReactNode}) => {
             });            
             setUser(res.data.user);
             router.push("/dashboard");
-        } catch(err) {
-            toast.error("Failed to fetch user")
+        } catch (err) {
+            throw err;
         }
     }
     
