@@ -6,14 +6,6 @@ Note: The UI design is based on a YouTube tutorial [**Build a Full-Stack AI-Powe
 
 ---
 
-## 🌐 Live Demo
-
-👉 https://ai-learning-assistant-4jdaen9hq-arwas-projects-d21dd2bc.vercel.app/dashboard
-
-**Note:** AI-powered features are disabled in the live demo because the required API key is not deployed publicly. You can run the project locally with your own API keys to access the full functionality.
-
----
-
 ## 🎥 Demo Video
 
 👉 https://drive.google.com/file/d/1gxamHeCAWAM4FD8LnN1RKCgmYXWWesZ7/view?usp=drivesdk
